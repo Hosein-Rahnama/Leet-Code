@@ -32,7 +32,8 @@ def run():
     # Run and print the result.
     for input in input_list:
         result = method(*input)
-        print(result)
+        if not (result == None):
+            print(result)
 
 
 if __name__ == "__main__":

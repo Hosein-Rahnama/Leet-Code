@@ -6,7 +6,7 @@ from typing import List
 class Solution:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
         n = len(candies)
-        checkList = [False for i in range(n)]
+        checkList = [False for _ in range(n)]
         for kid in range(n):
             candies[kid] += extraCandies
             if hasMostCandies(kid, candies):
