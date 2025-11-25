@@ -1,0 +1,7 @@
+{
+    "output": "return",
+    "tests": [
+        ["IceCreAm"],
+        ["leetcode"]
+    ]
+}

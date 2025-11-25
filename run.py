@@ -7,7 +7,7 @@ import json
 def run():
     # Get problem ID and input file from terminal.
     problem_id = sys.argv[1]
-    input_file = sys.argv[2]
+    data_file = sys.argv[2]
 
     # Add the problem folder to system path.
     sys.path.append(f"./problem-set/{problem_id}")
@@ -25,15 +25,21 @@ def run():
     method_name = methods[0]
     method = getattr(object, method_name)
 
-    # Load and parse input.
-    with open(input_file, "r") as f:
-        input_list = json.load(f)
+    # Load and parse problem data.
+    with open(data_file, "r") as f:
+        data = json.load(f)
+        output = data['output']
+        tests = data['tests']
 
     # Run and print the result.
-    for input in input_list:
+    for input in tests:
         result = method(*input)
-        if not (result == None):
+        if output == 'return':
             print(result)
+        else:
+            args = list(inspect.signature(method).parameters.keys())
+            arg_index = args.index(output)
+            print(*input[arg_index])
 
 
 if __name__ == "__main__":

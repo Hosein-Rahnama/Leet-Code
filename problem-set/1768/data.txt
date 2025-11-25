@@ -1,0 +1,8 @@
+{
+    "output": "return",
+    "tests": [
+        ["abc", "pqr"],
+        ["ab", "pqrs"],
+        ["abcd", "pq"]
+    ]
+}
