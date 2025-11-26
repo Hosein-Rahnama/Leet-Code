@@ -3,6 +3,7 @@ import importlib
 import inspect
 import json
 import copy
+from colorama import Fore, Style
 
 
 def run():
@@ -29,29 +30,44 @@ def run():
     # Load and parse problem data.
     with open(data_file, "r") as f:
         data = json.load(f)
-        output = data["output"]
-        tests = data["tests"]
+    
+    report = data["report"]
+    tests = data["tests"]
 
-    # Run and print the result.
+    # Run the tests, check the results and print them.
     print()
-    cnt = 1
-    for input in tests:
+    cnt = 0
+    for test in tests:
+        # Run a test.
+        input = test["input"]
+        expected_output = test["output"]
+
         old_input = copy.deepcopy(input)
         old_input = ", ".join(map(str, old_input))
 
-        result = method(*input)
+        output = method(*input)
 
-        print(f"  test: {cnt}")
-        print(f" input: {old_input}")
-        if output == "return":
-            print(f"output: {result}")
-        else:
+        if report != "return":
             args = list(inspect.signature(method).parameters.keys())
-            arg_index = args.index(output)
-            print(f"output: {input[arg_index]}")
-        print()
-        
+            arg_index = args.index(report)
+            output = input[arg_index]
+
+        status = output == expected_output
         cnt += 1
+
+        # Display the result of a test.
+        if (status == True):
+            status_text = Fore.GREEN + "passed" + Style.RESET_ALL
+        else:
+            status_text = Fore.RED + "failed" + Style.RESET_ALL
+
+        print(f"{Fore.WHITE + "  test" + Style.RESET_ALL}: {cnt}")
+        print(f"{Fore.BLUE + " input" + Style.RESET_ALL}: {old_input}")
+        print(f"{Fore.BLUE + "output" + Style.RESET_ALL}: {output}")
+        print(f"{Fore.YELLOW + "status" + Style.RESET_ALL}: {status_text}")
+        if (status == False):
+            print(f"{Fore.MAGENTA + "expect" + Style.RESET_ALL}: {expected_output}")
+        print()
 
 
 if __name__ == "__main__":

@@ -1,8 +1,17 @@
 {
-    "output": "return",
+    "report": "return",
     "tests": [
-        ["ABCABC", "ABC"],
-        ["ABABAB", "ABAB"],
-        ["LEET", "CODE"]
+        {
+            "input": ["ABCABC", "ABC"],
+            "output": "ABC"
+        },
+        {
+            "input": ["ABABAB", "ABAB"],
+            "output": "AB"
+        },
+        {
+            "input": ["LEET", "CODE"],
+            "output": ""
+        }
     ]
 }

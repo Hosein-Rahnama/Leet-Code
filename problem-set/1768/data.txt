@@ -1,8 +1,17 @@
 {
-    "output": "return",
+    "report": "return",
     "tests": [
-        ["abc", "pqr"],
-        ["ab", "pqrs"],
-        ["abcd", "pq"]
+        {
+            "input": ["abc", "pqr"],
+            "output": "apbqcr"
+        },
+        {
+            "input": ["ab", "pqrs"],
+            "output": "apbqrs"
+        },
+        {
+            "input": ["abcd", "pq"],
+            "output": "apbqcd"
+        }
     ]
 }

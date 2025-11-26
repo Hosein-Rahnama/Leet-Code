@@ -1,7 +1,13 @@
 {
-    "output": "return",
+    "report": "return",
     "tests": [
-        ["IceCreAm"],
-        ["leetcode"]
+        {
+            "input": ["IceCreAm"],
+            "output": "AceCreIm"
+        },
+        {
+            "input": ["leetcode"],
+            "output": "leotcede"
+        }
     ]
 }
