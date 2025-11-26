@@ -1,4 +1,4 @@
 # TODO
 
 - [x] Improve the runner to detect which modified input should be printed as a result.
-- [ ] Improve the format of output by showing the input, the solution's ouput and the status of passing or failing the test.
+- [x] Improve the format of output by showing the input and the solution's ouput.
