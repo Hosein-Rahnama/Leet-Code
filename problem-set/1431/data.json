@@ -7,11 +7,11 @@
         },
         {
             "input": [[4,2,1,1,2], 1],
-            "output": [true, false, false, false, false] 
+            "output": [true, false, false, false, false]
         },
         {
             "input": [[12,1,12], 10],
-            "output": [true, false, true] 
+            "output": [true, false, true]
         }
     ]
 }

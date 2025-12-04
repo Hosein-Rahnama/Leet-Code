@@ -1,4 +1,4 @@
 #!/bin/bash
 
 PRB_ID=$1
-python ./run.py ${PRB_ID} ./problem-set/${PRB_ID}/data.txt
+python ./run.py ${PRB_ID} ./problem-set/${PRB_ID}/data.json
