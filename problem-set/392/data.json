@@ -1,0 +1,21 @@
+{
+    "report": "return",
+    "tests": [
+        {
+            "input": ["abc", "ahbgdc"],
+            "output": true
+        },
+        {
+            "input": ["axc", "ahbgdc"],
+            "output": false 
+        },
+        {
+            "input": ["acb", "ahbgdc"],
+            "output": false
+        },
+        {
+            "input": ["", "abc"],
+            "output": true
+        }
+    ]
+}
