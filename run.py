@@ -31,7 +31,7 @@ def run():
     with open(data_file, "r") as f:
         data = json.load(f)
     
-    report = data["report"]
+    report = data.get("report")
     tests = data["tests"]
 
     # Run the tests, check the results and print them.
@@ -47,7 +47,7 @@ def run():
 
         output = method(*input)
 
-        if report != "return":
+        if (report != "return") and (report is not None):
             args = list(inspect.signature(method).parameters.keys())
             arg_index = args.index(report)
             output = input[arg_index]

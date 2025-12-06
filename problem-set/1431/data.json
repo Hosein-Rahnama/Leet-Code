@@ -1,5 +1,4 @@
 {
-    "report": "return",
     "tests": [
         {
             "input": [[2,3,5,1,3], 3],

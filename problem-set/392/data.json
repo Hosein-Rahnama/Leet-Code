@@ -1,5 +1,4 @@
 {
-    "report": "return",
     "tests": [
         {
             "input": ["abc", "ahbgdc"],
