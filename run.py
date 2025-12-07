@@ -3,18 +3,17 @@ import importlib
 import inspect
 import json
 import copy
-from colorama import Fore, Style
 
+from colorama import Fore, Style
+from lib.LinkedList import LinkedList
 
 def run():
     # Get problem ID and input file path from command line.
     problem_id = sys.argv[1]
     data_file = sys.argv[2]
 
-    # Add the problem folder to system path.
-    sys.path.append(f"./problem-set/{problem_id}")
-
     # Load the Solution class.
+    sys.path.append(f"./problem-set/{problem_id}")
     module = importlib.import_module("main")
     Solution = module.Solution
     object = Solution()
@@ -32,25 +31,39 @@ def run():
         data = json.load(f)
     
     report = data.get("report")
+    convert = data.get("convert")
     tests = data["tests"]
 
     # Run the tests, check the results and print them.
     print()
     cnt = 0
     for test in tests:
-        # Run a test.
+        # Get test data.
         input = test["input"]
         expected_output = test["output"]
 
         old_input = copy.deepcopy(input)
         old_input = ", ".join(map(str, old_input))
 
+        # Convert specific inputs into python objects.
+        if (convert is not None):
+            flag, i = convert
+            if (flag == "LinkedList"):
+                input[i] = LinkedList(input[i]).head
+
+        # Run a test.
         output = method(*input)
 
-        if (report != "return") and (report is not None):
+        # Check for modified input.
+        if (report is not None):
             args = list(inspect.signature(method).parameters.keys())
-            arg_index = args.index(report)
-            output = input[arg_index]
+            j= args.index(report)
+            output = input[j]
+
+        # Convert specific outputs.
+        if (convert is not None):
+            if (flag == "LinkedList"):
+                output = LinkedList.from_head(output).values()
 
         status = output == expected_output
         cnt += 1
