@@ -1,5 +1,7 @@
 {
-    "report": "nums",
+    "runner": {
+        "report": "nums"
+    },
     "tests": [
         {
             "input": [[0, 1, 0, 3, 12]],

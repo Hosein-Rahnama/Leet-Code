@@ -6,6 +6,8 @@ import copy
 
 from colorama import Fore, Style
 from lib.LinkedList import LinkedList
+from lib.BinaryTree import BinaryTree
+
 
 def run():
     # Get problem ID and input file path from command line.
@@ -30,8 +32,11 @@ def run():
     with open(data_file, "r") as f:
         data = json.load(f)
     
-    report = data.get("report")
-    convert = data.get("convert")
+    runner = data.get("runner", {})
+    report = runner.get("report")
+    convert_input = runner.get("convert", {}).get("input")
+    convert_output = runner.get("convert", {}).get("output")
+
     tests = data["tests"]
 
     # Run the tests, check the results and print them.
@@ -46,24 +51,30 @@ def run():
         old_input = ", ".join(map(str, old_input))
 
         # Convert specific inputs into python objects.
-        if (convert is not None):
-            flag, i = convert
+        if (convert_input is not None):
+            flag, args = convert_input
             if (flag == "LinkedList"):
-                input[i] = LinkedList(input[i]).head
+                for i in args:
+                    input[i] = LinkedList(input[i]).head
+            elif (flag == "BinaryTree"):
+                for i in args:
+                    input[i] = BinaryTree(input[i]).root
 
         # Run a test.
         output = method(*input)
 
-        # Check for modified input.
+        # Check for reporting a modified input.
         if (report is not None):
             args = list(inspect.signature(method).parameters.keys())
-            j= args.index(report)
+            j = args.index(report)
             output = input[j]
 
         # Convert specific outputs.
-        if (convert is not None):
+        if (convert_output is not None):
             if (flag == "LinkedList"):
                 output = LinkedList.from_head(output).values()
+            elif (flag == "BinaryTree"):
+                output = BinaryTree.from_root(output).values()
 
         status = output == expected_output
         cnt += 1
