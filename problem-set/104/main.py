@@ -11,4 +11,3 @@ class Solution:
         maxDepth = self.maxDepth
         height = max(maxDepth(root.left), maxDepth(root.right)) + 1
         return height
-    

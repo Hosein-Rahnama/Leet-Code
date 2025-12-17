@@ -1,6 +1,8 @@
 # TODO
 
-- [x] Improve the runner to detect which modified input should be printed as a result.
+- [x] Improve runner to detect which modified input should be printed as a result.
+- [x] Improve runner for supporting different problems types like 374 and 933.
 - [x] Improve the format of output by showing the input and the solution's ouput.
 - [x] Automate test verification.
 - [x] Colorize runner output for better readability.
+- [ ] Show runtime and memory usuage in the output.

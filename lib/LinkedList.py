@@ -1,10 +1,16 @@
 from typing import Optional, List
 
 
+class LinkedList:
+    pass
+
 class ListNode:
     def __init__(self, val: int, next: Optional[ListNode] = None):
         self.val = val
         self.next = next
+
+    def __str__(self):
+        return str(LinkedList.from_head(self))
 
 class LinkedList:
     def __init__(self, values: List[int] = []):
@@ -31,3 +37,8 @@ class LinkedList:
             values.append(node.val)
             node = node.next
         return values
+    
+    def __str__(self):
+        string = map(str, self.values())
+        string = ", ".join(string)
+        return f"[{string}]"

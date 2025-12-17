@@ -1,13 +1,22 @@
 from typing import Optional, List
+from collections import deque
 from math import log2
-import queue
 
+
+class BinaryTree():
+    pass
 
 class TreeNode:
     def __init__(self, val: int, left: Optional[TreeNode] = None, right:Optional[TreeNode] = None):
         self.val = val
         self.left = left
         self.right = right
+    
+    def is_leaf(self):
+        return (self.left is None) and (self.right is None)
+    
+    def __str__(self):
+        return str(BinaryTree.from_root(self))
 
 class BinaryTree:
     def __init__(self, values: List[int] = []):
@@ -31,19 +40,41 @@ class BinaryTree:
         t.root = root
         return t
     
+    def height(self):
+        root = self.root
+        if ((root is None) or root.is_leaf()):
+            return 0
+        left = BinaryTree.from_root(root.left)
+        right = BinaryTree.from_root(root.right)
+        h = max(left.height(), right.height()) + 1
+        return h
+    
     def values(self) -> List[int]:
-        if (self.root is None):
+        root = self.root
+        if (root is None):
             return []
         
-        values = []
-        q = queue.Queue()
-        q.put(self.root)
-        while (not q.empty()):
-            node = q.get()
-            values.append(node.val)
-            if node.left is not None:
-                q.put(node.left) 
-            if node.right is not None:
-                q.put(node.right)   
+        h = self.height()
+        q = deque([root])
+        values = [root.val]
+        for _ in range(h):
+            for _ in range(len(q)):
+                node = q.popleft()
+                left = right = None
+                if (node is not None):
+                    left = node.left
+                    right = node.right
+                q.append(left)
+                q.append(right)
+                
+                left_value = left.val if left is not None else None
+                right_value = right.val if right is not None else None
+                values.append(left_value)
+                values.append(right_value)
                 
         return values
+    
+    def __str__(self):
+        string = map(str, self.values())
+        string = ", ".join(string)
+        return f"[{string}]"
