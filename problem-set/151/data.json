@@ -1,0 +1,16 @@
+{
+    "tests": [
+        {
+            "input": ["the sky is blue"],
+            "output": "blue is sky the"
+        },
+        {
+            "input": ["  hello world  "],
+            "output": "world hello"
+        },
+        {
+            "input": ["a good   example"],
+            "output": "example good a"
+        }
+    ]
+}

@@ -7,7 +7,7 @@ class BinaryTree():
     pass
 
 class TreeNode:
-    def __init__(self, val: int, left: Optional[TreeNode] = None, right:Optional[TreeNode] = None):
+    def __init__(self, val: int, left: Optional[TreeNode] = None, right: Optional[TreeNode] = None):
         self.val = val
         self.left = left
         self.right = right
