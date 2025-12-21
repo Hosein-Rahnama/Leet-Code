@@ -107,7 +107,10 @@ def run_function(solution, input, report):
     if (report is not None):
         args = list(inspect.signature(method).parameters.keys())
         j = args.index(report)
-        output = input[j]
+        if (output is None):
+            output = input[j]
+        else:
+            output = [input[j], output]
 
     return output
 
