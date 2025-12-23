@@ -5,9 +5,9 @@ from typing import List
 
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
+        n = len(nums)
         left_sum = 0
         right_sum = 0
-        n = len(nums)
         for i in range(1, n):
             right_sum += nums[i]
 

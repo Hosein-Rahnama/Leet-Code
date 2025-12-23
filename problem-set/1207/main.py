@@ -5,7 +5,7 @@ from typing import List
 
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
-        occur = {}
+        occur = dict()
         for i in arr:
             occur[i] = occur.get(i, 0) + 1
 

@@ -4,18 +4,18 @@ from typing import List
 
 
 class Solution:
-    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+    def kidsWithCandies(self, candies: List[int], extra: int) -> List[bool]:
         n = len(candies)
-        checkList = [False for _ in range(n)]
+        check_list = [False for _ in range(n)]
         for kid in range(n):
-            candies[kid] += extraCandies
-            if hasMostCandies(kid, candies):
-                checkList[kid] = True
-            candies[kid] -= extraCandies
-        return checkList
+            candies[kid] += extra
+            if has_most_candies(kid, candies):
+                check_list[kid] = True
+            candies[kid] -= extra
+        return check_list
 
 
-def hasMostCandies(kid: int, candies: List[int]) -> bool:
+def has_most_candies(kid: int, candies: List[int]) -> bool:
     n = len(candies)
     for i in range(n):
         if candies[kid] < candies[i]:

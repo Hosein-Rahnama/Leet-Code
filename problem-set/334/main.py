@@ -1,8 +1,5 @@
 # 334. Increasing Triplet Subsequence
 
-from typing import List
-
-
 class Solution:
     def increasingTriplet(self, nums):
         n = len(nums)
