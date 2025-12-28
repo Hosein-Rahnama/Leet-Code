@@ -1,0 +1,16 @@
+{
+    "tests": [
+        {
+            "input": ["abciiidef", 3],
+            "output": 3
+        },
+        {
+            "input": ["aeiou", 2],
+            "output": 2
+        },
+        {
+            "input": ["leetcode", 3],
+            "output": 2
+        }
+    ]
+}

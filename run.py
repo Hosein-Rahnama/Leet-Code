@@ -57,9 +57,12 @@ def run():
 
 def load_class():
     module = importlib.import_module("main")
+    classes = []
     for name, obj in inspect.getmembers(module, inspect.isclass):
         if obj.__module__ == "main":
-            return obj
+            classes.append(obj)
+    classes.sort(key = lambda code: inspect.getsourcelines(code)[1])
+    return classes[0]
 
 def convert_input(input, options):
     if (options is not None):
