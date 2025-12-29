@@ -1,0 +1,28 @@
+{
+    "tests": [
+        {
+            "input": ["abc", "bca"],
+            "output": true
+        },
+        {
+            "input": ["a", "aa"],
+            "output": false
+        },
+        {
+            "input": ["cabbba", "abbccc"],
+            "output": true
+        },
+        {
+            "input": ["abbzccca", "babzzczc"],
+            "output": true
+        },
+        {
+            "input": ["uau", "ssx"],
+            "output": false
+        },
+        {
+            "input": ["aaabbbbccddeeeeefffff", "aaaaabbcccdddeeeeffff"],
+            "output": false
+        }
+    ]
+}
