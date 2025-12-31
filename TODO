@@ -5,5 +5,6 @@
 - [x] Improve the format of output by showing the input and the solution's ouput.
 - [x] Automate test verification.
 - [x] Colorize runner output for better readability.
-- [ ] Show runtime and memory usuage in the output.
 - [x] Add important techniques that you learned from each problem.
+- [ ] Show runtime and memory usuage in the output.
+- [ ] Include multiple solutions.

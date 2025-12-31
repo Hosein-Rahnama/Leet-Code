@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": ["RD"],
+            "output": "Radiant"
+        },
+        {
+            "input": ["RDD"],
+            "output": "Dire"
+        },
+        {
+            "input": ["DRRDRR"],
+            "output": "Radiant"
+        },
+        {
+            "input": ["DRDRR"],
+            "output": "Dire"
+        },
+        {
+            "input": ["DDDDDRRRRR"],
+            "output": "Dire"
+        }
+    ]
+}
