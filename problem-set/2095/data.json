@@ -5,6 +5,7 @@
             "output": ["LinkedList"]
         }
     },
+    
     "tests": [
         {
             "input": [[1, 3, 4, 7, 1, 2, 6]],

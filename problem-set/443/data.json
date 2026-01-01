@@ -2,6 +2,7 @@
     "runner": {
         "report": "chars"
     },
+    
     "tests": [
         {
             "input": [["a", "a", "b", "b", "c", "c", "c"]],
