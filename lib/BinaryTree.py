@@ -1,6 +1,5 @@
 from typing import Optional, List
 from collections import deque
-from math import log2
 
 
 class BinaryTree():
@@ -27,50 +26,47 @@ class BinaryTree:
         
         nodes = [(TreeNode(values[i]) if values[i] is not None else None) for i in range(n)]
         self.root = nodes[0]
-        h = int(log2(n + 1) - 1)
-        for i in range(2 ** h - 1):
+        i = 0
+        j = 1
+        l = 1
+        while (j < len(nodes)):
+            count = 0
+            u = i + l
+            while (i < u):
                 node = nodes[i]
                 if (node is not None):
-                    node.left = nodes[2 * i + 1]
-                    node.right = nodes[2 * i + 2]
-            
+                    node.left = nodes[j]
+                    node.right = nodes[j + 1]
+                    j += 2
+                    count += 1
+                i += 1
+            l = 2 * count
+
     @classmethod
     def from_root(cls, root: TreeNode) -> BinaryTree:
         t = BinaryTree()
         t.root = root
         return t
     
-    def height(self):
-        root = self.root
-        if ((root is None) or root.is_leaf()):
-            return 0
-        left = BinaryTree.from_root(root.left)
-        right = BinaryTree.from_root(root.right)
-        h = max(left.height(), right.height()) + 1
-        return h
-    
     def values(self) -> List[int]:
         root = self.root
         if (root is None):
             return []
         
-        h = self.height()
         q = deque([root])
         values = [root.val]
-        for _ in range(h):
-            for _ in range(len(q)):
-                node = q.popleft()
-                left = right = None
-                if (node is not None):
-                    left = node.left
-                    right = node.right
-                q.append(left)
-                q.append(right)
-                
+        while (len(q) != 0):
+            node = q.popleft()
+            left = right = None
+            if (node is not None):
+                left = node.left
+                right = node.right
                 left_value = left.val if left is not None else None
                 right_value = right.val if right is not None else None
                 values.append(left_value)
                 values.append(right_value)
+            q.append(left)
+            q.append(right)
                 
         return values
     

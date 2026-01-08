@@ -7,11 +7,11 @@
 
     "tests": [
         {
-            "input": [[10, 5, -3, 3, 2, null, 11, 3, -2, null, 1, null, null, null, null], 8],
+            "input": [[10, 5, -3, 3, 2, null, 11, 3, -2, null, 1, null, null], 8],
             "output": 3
         },
         {
-            "input": [[5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1, null, null], 22],
+            "input": [[5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1], 22],
             "output": 3
         },
         {
